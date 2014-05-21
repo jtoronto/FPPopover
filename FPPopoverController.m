@@ -236,17 +236,24 @@
 
     [self.view removeFromSuperview];
     NSArray *windows = [UIApplication sharedApplication].windows;
-    if(windows.count > 0)
+   if(windows.count > 0)
     {
           _parentView=nil;
         _window = [windows objectAtIndex:0];
         //keep the first subview
+        
         if(_window.subviews.count > 0)
         {
-            _parentView = [_window.subviews objectAtIndex:0];
+            if (_subviewOverride) {
+                _parentView = _subviewOverride;
+            }
+            else{
+                _parentView = [_window.subviews objectAtIndex:0];
+            }
             [_parentView addSubview:self.view];
             [_viewController viewDidAppear:YES];
         }
+
         
    }
     else
