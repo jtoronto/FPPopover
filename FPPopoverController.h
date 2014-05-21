@@ -55,6 +55,9 @@
 /** @brief Popover border, default is YES **/
 @property(nonatomic, assign) BOOL border;
 
+/** This is to allow the use of a different subview than the just first subview under _window.subviews **/
+@property UIView *subviewOverride; 
+
 /** @brief Initialize the popover with the content view controller
  **/
 -(id)initWithViewController:(UIViewController*)viewController;
